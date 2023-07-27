@@ -99,6 +99,8 @@ export default function Home(props: any) {
             <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>TOTAL DURANTE PERÍODO: <Text as="span" id='totalPeriodo' ml={'20px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}><Spinner as='span' class='totalPeriodoSpinner' /></Text></Text>
             <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>MÉDIA DO PERÍODO: <Text as="span" id='mediaPeriodo' ml={'85px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}><Spinner as='span' class='mediaPeriodoSpinner' /></Text></Text>
           </Box>
+          <Text fontWeight={'bold'} position={'fixed'} bottom={'2.5'} right={'65px'}>Powered by <a href='https://github.com/nevesm'>nevesm</a></Text>
+          <a href='https://github.com/nevesm/dividendos'><Image src='/github.png' w={'2%'} position={'fixed'} bottom={'5'} right={'5'}></Image></a>
         </VStack>
       </Center>
     </>
