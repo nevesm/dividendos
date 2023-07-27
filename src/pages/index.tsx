@@ -91,7 +91,7 @@ export default function Home(props: any) {
           </Box>
           <Button onClick={fetchStocksData} mt={5} width={"350px"} colorScheme="blue">Calcular</Button>
           <Box display={'flex'} id="responsebox" boxShadow='dark-lg' display="none" mt={'50px'} borderRadius={'5px'} bg={'white'} maxW={'800px'} maxH={'450px'}>
-            <Image mt={2} ml={2} boxShadow='dark-lg' id='logo'></Image>
+            <Image mt={4} ml={4} boxShadow='dark-lg' id='logo'></Image>
             <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>DIVIDENDOS DESSE ANO: <Text as="span" id='dividendosEsseAno' ml={'42px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
             <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>TOTAL DURANTE PERÍODO: <Text as="span" id='totalPeriodo' ml={'20px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
             <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>MÉDIA DO PERÍODO: <Text as="span" id='mediaPeriodo' ml={'85px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
