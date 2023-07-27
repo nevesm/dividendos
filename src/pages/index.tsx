@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Text, Box, Container, VStack, Button, Center, HStack, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Flex, SliderFilledTrack, SliderThumb, SliderTrack, Image } from "@chakra-ui/react"
+import { Text, Box, VStack, Button, Center, HStack, Spinner, Image } from "@chakra-ui/react"
 import React, { useCallback, useRef, useState } from 'react';
 import { AutoComplete, Slider } from "@geist-ui/core";
 
@@ -59,8 +59,11 @@ export default function Home(props: any) {
       fetch(`/api/acoes/${ticker}?periodo=${periodo}`)
       .then(response => response.json())
       .then(result => {
+        document.getElementsByClassName("dividendosEsseAnoSpinner").hidden
         document.querySelector('#dividendosEsseAno').textContent = `R$ ${result[ticker].dividendos.dividendosEsseAno}`
+        document.getElementsByClassName("totalPeriodoSpinner").hidden
         document.querySelector('#totalPeriodo').textContent = `R$ ${result[ticker].dividendos.totalPeriodo}`
+        document.getElementsByClassName("mediaPeriodoSpinner").hidden
         document.querySelector('#mediaPeriodo').textContent = `R$ ${result[ticker].dividendos.mediaPeriodo}`
       })
       fetch(`https://brapi.dev/api/quote/list?sortBy=close&sortOrder=desc&limit=10&search=${ticker}`)
@@ -92,9 +95,9 @@ export default function Home(props: any) {
           <Button onClick={fetchStocksData} mt={5} width={"350px"} colorScheme="blue">Calcular</Button>
           <Box display={'flex'} id="responsebox" boxShadow='dark-lg' display="none" mt={'50px'} borderRadius={'5px'} bg={'white'} maxW={'800px'} maxH={'450px'}>
             <Image mt={4} ml={4} boxShadow='dark-lg' id='logo'></Image>
-            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>DIVIDENDOS DESSE ANO: <Text as="span" id='dividendosEsseAno' ml={'42px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
-            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>TOTAL DURANTE PERÍODO: <Text as="span" id='totalPeriodo' ml={'20px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
-            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>MÉDIA DO PERÍODO: <Text as="span" id='mediaPeriodo' ml={'85px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}></Text></Text>
+            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>DIVIDENDOS DESSE ANO: <Text as="span" id='dividendosEsseAno' ml={'42px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}><Spinner as='span' class='dividendosEsseAnoSpinner' /></Text></Text>
+            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>TOTAL DURANTE PERÍODO: <Text as="span" id='totalPeriodo' ml={'20px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}><Spinner as='span' class='totalPeriodoSpinner' /></Text></Text>
+            <Text ml={4} mt={2} textColor={'black'} fontWeight={'extrabold'} fontSize={'xl'}>MÉDIA DO PERÍODO: <Text as="span" id='mediaPeriodo' ml={'85px'} mr={5} textColor={'blue.500'} fontSize={'xl'} fontWeight={'extrabold'}><Spinner as='span' class='mediaPeriodoSpinner' /></Text></Text>
           </Box>
         </VStack>
       </Center>
